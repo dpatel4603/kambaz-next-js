@@ -74,13 +74,18 @@ export default async function Assignments({ params }: { params: Promise<{ cid: s
 
   const assignmentCategories = getCourseAssignments(cid);
 
-  const AssignmentGroup = ({ title, weight, assignments, categoryId }: { 
+  interface Assignment {
+    id: string;
+    title: string;
+    points: number;
+    dueDate: string;
+  }
+
+  const AssignmentGroup = ({ title, weight, assignments }: { 
     title: string; 
     weight: string; 
-    assignments: any[]; 
-    categoryId: string;
+    assignments: Assignment[]; 
   }) => {
-    const totalPoints = assignments.reduce((sum, assignment) => sum + assignment.points, 0);
     
     return (
       <div className="wd-assignment-group">
@@ -127,28 +132,24 @@ export default async function Assignments({ params }: { params: Promise<{ cid: s
           title="ASSIGNMENTS" 
           weight="40%" 
           assignments={assignmentCategories.assignments}
-          categoryId="assignments"
         />
         
         <AssignmentGroup 
           title="QUIZZES" 
           weight="10%" 
           assignments={assignmentCategories.quizzes}
-          categoryId="quizzes"
         />
         
         <AssignmentGroup 
           title="EXAMS" 
           weight="30%" 
           assignments={assignmentCategories.exams}
-          categoryId="exams"
         />
         
         <AssignmentGroup 
           title="PROJECT" 
           weight="20%" 
           assignments={assignmentCategories.project}
-          categoryId="project"
         />
       </div>
     </div>
