@@ -80,7 +80,6 @@ export default function Profile() {
           placeholder="username" 
           className="wd-username"
           readOnly={!isEditing}
-          onChange={handleInputChange}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
         /><br/>
         
@@ -90,7 +89,6 @@ export default function Profile() {
           placeholder="password"
           className="wd-password"
           readOnly={!isEditing}
-          onChange={handleInputChange}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
         /><br/>
         
@@ -100,7 +98,6 @@ export default function Profile() {
           placeholder="First Name" 
           id="wd-firstname"
           readOnly={!isEditing}
-          onChange={handleInputChange}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
         /><br/>
         
@@ -110,7 +107,6 @@ export default function Profile() {
           placeholder="Last Name" 
           id="wd-lastname"
           readOnly={!isEditing}
-          onChange={handleInputChange}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
         /><br/>
         
@@ -120,7 +116,6 @@ export default function Profile() {
           type="date" 
           id="wd-dob"
           readOnly={!isEditing}
-          onChange={handleInputChange}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
         /><br/>
         
@@ -130,7 +125,6 @@ export default function Profile() {
           type="email" 
           id="wd-email"
           readOnly={!isEditing}
-          onChange={handleInputChange}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
         /><br/>
         
@@ -139,7 +133,6 @@ export default function Profile() {
           defaultValue={formData.role} 
           id="wd-role"
           disabled={!isEditing}
-          onChange={handleInputChange}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
         >
           <option value="USER">User</option>       

@@ -1,6 +1,4 @@
 "use client";
-import Image from "next/image";
-
 export default function Lab1() {
   return (
     <div id="wd-lab1">
@@ -52,13 +50,13 @@ export default function Lab1() {
         <ul id="wd-my-books">
           <li>Dune</li>
           <li>Lord of the Rings</li>
-          <li>Ender&apos;s Game</li>
+          <li>Ender's Game</li>
           <li>Red Mars</li>
           <li>The Forever War</li>
         </ul>
         Your favorite books (in no particular order)
         <ul id="wd-your-books">
-          <li>The Hitchhiker&apos;s Guide to the Galaxy</li>
+          <li>The Hitchhiker's Guide to the Galaxy</li>
           <li>1984</li>
           <li>To Kill a Mockingbird</li>
           <li>Pride and Prejudice</li>
@@ -148,23 +146,11 @@ export default function Lab1() {
       <div id="wd-images">
         <h4>Image tag</h4>
         Loading an image from the internet: <br />
-        <Image 
-          id="wd-starship" 
-          width={400} 
-          height={300}
-          src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg" 
-          alt="Starship image"
-        />
+        <img id="wd-starship" width="400px" src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg" />
         <br />
         Loading a local image:
         <br />
-        <Image 
-          id="wd-teslabot" 
-          src="/images/teslabot.jpg" 
-          width={300}
-          height={200} 
-          alt="Tesla bot image"
-        />
+        <img id="wd-teslabot" src="/images/teslabot.jpg" height="200px" />
       </div>
       <div id="wd-forms">
         <h4>Form Elements</h4>
@@ -244,7 +230,7 @@ export default function Lab1() {
       Please
       <a href="https://www.lipsum.com" id="wd-lipsum">click here</a>
       to get dummy text<br/>
-      <a href="https://github.com" id="wd-github">My GitHub</a>
+      <a href="https://github.com/dpatel4603/kambaz-next-js" id="wd-github">My GitHub</a>
     </div>
   );
 }

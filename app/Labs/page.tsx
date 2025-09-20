@@ -4,6 +4,12 @@ export default function Labs() {
   return (
     <div id="wd-labs">
       <h1>Labs</h1>
+      <p>Created by: Dev Patel SECTION: 01</p>
+      <p>
+        <a href="https://github.com/dpatel4603/kambaz-next-js" target="_blank" rel="noopener noreferrer">
+          View Repository
+        </a>
+      </p>
       <ul>
         <li>
           <Link href="/Labs/Lab1" id="wd-lab1-link">

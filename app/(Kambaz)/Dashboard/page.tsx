@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 
@@ -18,27 +16,7 @@ export default function Dashboard() {
 
   return (
     <div id="wd-dashboard">
-      <div className="wd-dashboard-header">
-        <h1 id="wd-dashboard-title">Dashboard</h1>
-        <div className="wd-user-info">
-          <span className="wd-user-name">Dev Patel</span>
-          <Link 
-            href="https://github.com/dpatel4603/kambaz-next-js" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="wd-github-link"
-          >
-            <Image 
-              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" 
-              width={16} 
-              height={16} 
-              alt="GitHub" 
-            />
-            GitHub
-          </Link>
-        </div>
-      </div>
-      <hr />
+      <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
       <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> <hr />
       <div id="wd-dashboard-courses">
         {courses.map((course) => (
@@ -56,57 +34,6 @@ export default function Dashboard() {
           </div>
         ))}
       </div>
-      
-      <style jsx>{`
-        .wd-dashboard-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 1rem;
-        }
-        
-        .wd-user-info {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-        }
-        
-        .wd-user-name {
-          font-size: 1.2rem;
-          font-weight: 600;
-          color: #1abc9c;
-        }
-        
-        .wd-github-link {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          background: #24292e;
-          color: white;
-          padding: 0.5rem 1rem;
-          border-radius: 6px;
-          text-decoration: none;
-          font-size: 0.9rem;
-          transition: background-color 0.3s ease;
-        }
-        
-        .wd-github-link:hover {
-          background: #1a1e22;
-        }
-        
-        @media (max-width: 768px) {
-          .wd-dashboard-header {
-            flex-direction: column;
-            gap: 1rem;
-            align-items: flex-start;
-          }
-          
-          .wd-user-info {
-            width: 100%;
-            justify-content: space-between;
-          }
-        }
-      `}</style>
     </div>
   );
 }
