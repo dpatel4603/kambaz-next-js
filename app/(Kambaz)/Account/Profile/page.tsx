@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Profile() {
-  const [formData, setFormData] = useState({
+  const [formData] = useState({
     username: "dev patel",
     password: "password",
     firstName: "Dev",
@@ -17,13 +17,6 @@ export default function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState("");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
