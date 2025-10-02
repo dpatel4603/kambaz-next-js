@@ -1,5 +1,6 @@
 import "./index.css";
 import { Container } from "react-bootstrap";
+import Link from "next/link";
 import ForegroundColors from "./ForegroundColors";
 import BackgroundColors from "./BackgroundColors";
 import Borders from "./Borders";
@@ -23,6 +24,11 @@ import ScreenSizeLabel from "./ScreenSizeLabel";
 export default function Lab2() {
   return (
     <Container id="wd-lab2">
+      <div className="mb-3">
+        <Link href="/Labs" className="btn btn-outline-primary">
+          ← Back to Lab Exercises
+        </Link>
+      </div>
       <h2>Lab 2 - Cascading Style Sheets</h2>
       
       <h3>Styling with the STYLE attribute</h3>
@@ -93,8 +99,8 @@ export default function Lab2() {
       <BootstrapTables />
       <BootstrapLists />
       <BootstrapForms />
-      {/* <BootstrapNavigation /> */}
-      {/* <ScreenSizeLabel /> */}
+      <BootstrapNavigation />
+      <ScreenSizeLabel />
     </Container>
   );
 }
