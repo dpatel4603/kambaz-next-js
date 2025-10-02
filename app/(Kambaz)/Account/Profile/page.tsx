@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { FormControl, Button, FormSelect } from "react-bootstrap";
 
 export default function Profile() {
   const [formData] = useState({
@@ -10,13 +11,12 @@ export default function Profile() {
     firstName: "Dev",
     lastName: "Patel",
     dateOfBirth: "2000-01-01",
-    email: "dev.patel@northeastern.edu",
+    email: "patel.dev7@northeastern.edu",
     role: "FACULTY"
   });
 
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState("");
-
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,7 +51,7 @@ export default function Profile() {
 
   return (
     <div id="wd-profile-screen">
-      <h3>Profile</h3>
+      <h1>Profile</h1>
       
       {message && (
         <div style={{
@@ -67,64 +67,65 @@ export default function Profile() {
       )}
       
       <form onSubmit={handleSave}>
-        <input 
+        <FormControl 
           name="username"
           defaultValue={formData.username} 
           placeholder="username" 
-          className="wd-username"
+          className="mb-2"
           readOnly={!isEditing}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
-        /><br/>
+        />
         
-        <input 
+        <FormControl 
           name="password"
           defaultValue={formData.password}   
           placeholder="password"
-          className="wd-password"
+          type="password"
+          className="mb-2"
           readOnly={!isEditing}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
-        /><br/>
+        />
         
-        <input 
+        <FormControl 
           name="firstName"
           defaultValue={formData.firstName} 
           placeholder="First Name" 
-          id="wd-firstname"
+          className="mb-2"
           readOnly={!isEditing}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
-        /><br/>
+        />
         
-        <input 
+        <FormControl 
           name="lastName"
           defaultValue={formData.lastName} 
           placeholder="Last Name" 
-          id="wd-lastname"
+          className="mb-2"
           readOnly={!isEditing}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
-        /><br/>
+        />
         
-        <input 
+        <FormControl 
           name="dateOfBirth"
           defaultValue={formData.dateOfBirth} 
           type="date" 
-          id="wd-dob"
+          className="mb-2"
           readOnly={!isEditing}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
-        /><br/>
+        />
         
-        <input 
+        <FormControl 
           name="email"
           defaultValue={formData.email} 
           type="email" 
-          id="wd-email"
+          className="mb-2"
           readOnly={!isEditing}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
-        /><br/>
+        />
         
-        <select 
+        <FormSelect 
           name="role"
           defaultValue={formData.role} 
-          id="wd-role"
+          className="mb-2"
           disabled={!isEditing}
           style={{backgroundColor: isEditing ? 'white' : '#f5f5f5'}}
         >
@@ -132,61 +133,39 @@ export default function Profile() {
           <option value="ADMIN">Admin</option>
           <option value="FACULTY">Faculty</option> 
           <option value="STUDENT">Student</option>
-        </select><br/>
+        </FormSelect>
         
         {!isEditing ? (
-          <button 
+          <Button 
             type="button" 
+            variant="primary"
             onClick={() => setIsEditing(true)}
-            style={{
-              backgroundColor: '#1abc9c',
-              color: 'white',
-              border: 'none',
-              padding: '12px 30px',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              margin: '10px 5px 10px 0'
-            }}
+            className="me-2"
           >
             Edit Profile
-          </button>
+          </Button>
         ) : (
           <>
-            <button 
+            <Button 
               type="submit"
-              style={{
-                backgroundColor: '#1abc9c',
-                color: 'white',
-                border: 'none',
-                padding: '12px 30px',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                margin: '10px 5px 10px 0'
-              }}
+              variant="success"
+              className="me-2"
             >
               Save Changes
-            </button>
-            <button 
+            </Button>
+            <Button 
               type="button"
+              variant="secondary"
               onClick={handleCancel}
-              style={{
-                backgroundColor: '#95a5a6',
-                color: 'white',
-                border: 'none',
-                padding: '12px 30px',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                margin: '10px 0'
-              }}
             >
               Cancel
-            </button>
+            </Button>
           </>
         )}
       </form>
       
       <br />
-      <Link href="/Account/Signin" > Sign out </Link>
+      <Link href="/Account/Signin">Sign out</Link>
     </div>
   );
 }

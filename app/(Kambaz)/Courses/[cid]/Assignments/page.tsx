@@ -1,123 +1,100 @@
 import Link from "next/link";
+import { Button, FormControl, ListGroup, ListGroupItem } from "react-bootstrap";
+import { FaPlus } from "react-icons/fa";
+import { IoEllipsisVertical } from "react-icons/io5";
 
 export default async function Assignments({ params }: { params: Promise<{ cid: string }> }) {
   const { cid } = await params;
   
   // Course-specific assignment categories with weights and points
-  const getCourseAssignments = (courseId: string) => {
+  const getCourseAssignments = () => {
     const baseAssignments = {
       assignments: [
-        { id: 'A1', title: 'Environment Setup and HTML Basics', points: 100, dueDate: '2024-01-15' },
-        { id: 'A2', title: 'CSS Styling and Bootstrap Framework', points: 100, dueDate: '2024-01-22' },
-        { id: 'A3', title: 'JavaScript Fundamentals and DOM Manipulation', points: 100, dueDate: '2024-01-29' },
-        { id: 'A4', title: 'React Components and State Management', points: 100, dueDate: '2024-02-05' },
-        { id: 'A5', title: 'Node.js Backend and Express.js API', points: 100, dueDate: '2024-02-12' },
-        { id: 'A6', title: 'Database Integration with MongoDB', points: 100, dueDate: '2024-02-19' }
+        { id: 'A1', title: 'Environment Setup and HTML Basics', points: 100, dueDate: '2024-01-15', startDate: '2024-01-01', untilDate: '2024-01-20' },
+        { id: 'A2', title: 'CSS Styling and Bootstrap Framework', points: 100, dueDate: '2024-01-22', startDate: '2024-01-08', untilDate: '2024-01-27' },
+        { id: 'A3', title: 'JavaScript Fundamentals and DOM Manipulation', points: 100, dueDate: '2024-01-29', startDate: '2024-01-15', untilDate: '2024-02-03' }
       ],
       quizzes: [
-        { id: 'Q1', title: 'HTML and CSS Fundamentals', points: 25, dueDate: '2024-01-18' },
-        { id: 'Q2', title: 'JavaScript Basics', points: 25, dueDate: '2024-01-25' },
-        { id: 'Q3', title: 'React Concepts', points: 25, dueDate: '2024-02-01' },
-        { id: 'Q4', title: 'Backend Development', points: 25, dueDate: '2024-02-08' }
+        { id: 'Q1', title: 'HTML and CSS Fundamentals', points: 25, dueDate: '2024-01-18', startDate: '2024-01-10', untilDate: '2024-01-23' },
+        { id: 'Q2', title: 'JavaScript Basics', points: 25, dueDate: '2024-01-25', startDate: '2024-01-17', untilDate: '2024-01-30' }
       ],
       exams: [
-        { id: 'E1', title: 'Midterm Exam', points: 200, dueDate: '2024-02-15' },
-        { id: 'E2', title: 'Final Exam', points: 200, dueDate: '2024-03-01' }
+        { id: 'E1', title: 'Midterm Exam', points: 200, dueDate: '2024-02-15', startDate: '2024-02-10', untilDate: '2024-02-20' }
       ],
       project: [
-        { id: 'P1', title: 'Full Stack Web Application', points: 300, dueDate: '2024-03-08' }
+        { id: 'P1', title: 'Full Stack Web Application', points: 300, dueDate: '2024-03-08', startDate: '2024-02-20', untilDate: '2024-03-15' }
       ]
     };
 
-    // Customize assignments based on course
-    switch (courseId) {
-      case 'CS4550':
-        return {
-          ...baseAssignments,
-          assignments: [
-            { id: 'A1', title: 'Environment Setup and HTML Basics', points: 100, dueDate: '2024-01-15' },
-            { id: 'A2', title: 'CSS Styling and Bootstrap Framework', points: 100, dueDate: '2024-01-22' },
-            { id: 'A3', title: 'JavaScript Fundamentals and DOM Manipulation', points: 100, dueDate: '2024-01-29' },
-            { id: 'A4', title: 'React Components and State Management', points: 100, dueDate: '2024-02-05' },
-            { id: 'A5', title: 'Node.js Backend and Express.js API', points: 100, dueDate: '2024-02-12' },
-            { id: 'A6', title: 'Database Integration with MongoDB', points: 100, dueDate: '2024-02-19' }
-          ]
-        };
-      case 'CS5610':
-        return {
-          ...baseAssignments,
-          assignments: [
-            { id: 'A1', title: 'RESTful API Design and Implementation', points: 100, dueDate: '2024-01-15' },
-            { id: 'A2', title: 'Authentication and Authorization', points: 100, dueDate: '2024-01-22' },
-            { id: 'A3', title: 'Database Design and Optimization', points: 100, dueDate: '2024-01-29' },
-            { id: 'A4', title: 'Microservices Architecture', points: 100, dueDate: '2024-02-05' },
-            { id: 'A5', title: 'API Testing and Documentation', points: 100, dueDate: '2024-02-12' },
-            { id: 'A6', title: 'Deployment and DevOps Practices', points: 100, dueDate: '2024-02-19' }
-          ]
-        };
-      case 'CS5800':
-        return {
-          ...baseAssignments,
-          assignments: [
-            { id: 'A1', title: 'Sorting Algorithms Implementation', points: 100, dueDate: '2024-01-15' },
-            { id: 'A2', title: 'Graph Algorithms and Data Structures', points: 100, dueDate: '2024-01-22' },
-            { id: 'A3', title: 'Dynamic Programming Problems', points: 100, dueDate: '2024-01-29' },
-            { id: 'A4', title: 'Greedy Algorithms and Optimization', points: 100, dueDate: '2024-02-05' },
-            { id: 'A5', title: 'Algorithm Complexity Analysis', points: 100, dueDate: '2024-02-12' },
-            { id: 'A6', title: 'Advanced Algorithm Design', points: 100, dueDate: '2024-02-19' }
-          ]
-        };
-      default:
-        return baseAssignments;
-    }
+    return baseAssignments;
   };
 
-  const assignmentCategories = getCourseAssignments(cid);
+  const assignmentCategories = getCourseAssignments();
 
   const AssignmentGroup = ({ title, weight, assignments }: { 
     title: string; 
     weight: string; 
-    assignments: Array<{ id: string; title: string; points: number; dueDate: string; }>; 
+    assignments: Array<{ id: string; title: string; points: number; dueDate: string; startDate: string; untilDate: string; }>; 
   }) => {
     
     return (
-      <div className="wd-assignment-group">
-        <div className="wd-assignment-group-header">
-          <h3 className="wd-assignment-group-title">
+      <div className="wd-assignment-group mb-4">
+        <div className="wd-assignment-group-header d-flex justify-content-between align-items-center mb-3">
+          <h3 className="wd-assignment-group-title mb-0">
             {title} {weight} of Total
-            <button className="wd-assignment-group-add">+</button>
           </h3>
+          <Button variant="secondary" size="sm" className="wd-assignment-group-add">
+            <FaPlus className="me-1" />
+          </Button>
         </div>
-        <ul className="wd-assignment-list">
+        <ListGroup className="wd-assignment-list">
           {assignments.map((assignment) => (
-            <li key={assignment.id} className="wd-assignment-list-item">
-              <Link href={`/Courses/${cid}/Assignments/${assignment.id}`} className="wd-assignment-link">
-                <div className="wd-assignment-content">
-                  <div className="wd-assignment-title">
-                    {assignment.id} - {assignment.title}
-                  </div>
-                  <div className="wd-assignment-details">
-                    <span className="wd-assignment-points">{assignment.points} pts</span>
-                    <span className="wd-assignment-due">Due {assignment.dueDate}</span>
+            <ListGroupItem key={assignment.id} className="wd-assignment-list-item p-0 border-0">
+              <Link href={`/Courses/${cid}/Assignments/${assignment.id}`} className="wd-assignment-link text-decoration-none text-dark">
+                <div className="wd-assignment-content p-3 border-start border-success border-3">
+                  <div className="d-flex justify-content-between align-items-start">
+                    <div className="flex-grow-1">
+                      <div className="wd-assignment-title fw-bold mb-1">
+                        {assignment.id} - {assignment.title}
+                      </div>
+                      <div className="wd-assignment-details text-muted small">
+                        <div>Multiple Modules | Not available until {assignment.startDate} at 12:00am</div>
+                        <div>Due {assignment.dueDate} at 11:59pm | {assignment.points} pts</div>
+                      </div>
+                    </div>
+                    <div className="ms-3">
+                      <IoEllipsisVertical className="fs-4 text-muted" />
+                    </div>
                   </div>
                 </div>
               </Link>
-            </li>
+            </ListGroupItem>
           ))}
-        </ul>
+        </ListGroup>
       </div>
     );
   };
 
   return (
     <div id="wd-assignments">
-      <div className="wd-assignments-header">
-        <input 
-          placeholder="Search for Assignments"
-          className="wd-search-assignment" 
-        />
-        <button className="wd-add-assignment-group">+ Group</button>
-        <button className="wd-add-assignment">+ Assignment</button>
+      <div className="wd-assignments-header d-flex justify-content-between align-items-center mb-4">
+        <div className="flex-grow-1 me-3">
+          <FormControl 
+            placeholder="Search for Assignments"
+            className="wd-search-assignment"
+            style={{ maxWidth: '300px' }}
+          />
+        </div>
+        <div className="d-flex gap-2">
+          <Button variant="secondary" className="wd-add-assignment-group">
+            <FaPlus className="me-1" />
+            Group
+          </Button>
+          <Button variant="danger" className="wd-add-assignment">
+            <FaPlus className="me-1" />
+            Assignment
+          </Button>
+        </div>
       </div>
       
       <div className="wd-assignments-content">

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { FormControl } from "react-bootstrap";
 
 export default function Signin() {
   const [formData, setFormData] = useState({
@@ -26,26 +27,34 @@ export default function Signin() {
 
   return (
     <div id="wd-signin-screen">
-      <h3 style={{fontWeight: 'bold', fontSize: '1.5em'}}>Sign in</h3>
+      <h1>Sign in</h1>
       <form onSubmit={handleSubmit}>
-        <input 
+        <FormControl 
+          id="wd-username"
           name="username"
           placeholder="username" 
-          className="wd-username" 
+          className="mb-2"
           value={formData.username}
           onChange={handleInputChange}
-        /> <br />
-        <input 
+        /><br />
+        <FormControl 
+          id="wd-password"
           name="password"
           placeholder="password" 
           type="password" 
-          className="wd-password" 
+          className="mb-2"
           value={formData.password}
           onChange={handleInputChange}
-        /> <br />
-        <button type="submit" className="wd-signin-btn">Sign in</button> <br />
+        /><br />
+        <Link 
+          id="wd-signin-btn"
+          href="/Account/Profile"
+          className="btn btn-primary w-100 mb-2"
+        >
+          Sign in
+        </Link><br />
+        <Link id="wd-signup-link" href="/Account/Signup">Sign up</Link>
       </form>
-      <Link href="/Account/Signup" id="wd-signup-link"> Sign up </Link>
     </div>
   );
 }

@@ -6,7 +6,7 @@ export default function Labs() {
       <h1>Labs</h1>
       <p>Created by: Dev Patel SECTION: 01</p>
       <p>
-        <a href="https://github.com/dpatel4603/kambaz-next-js" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/dpatel4603/kambaz-next-js" target="_blank" rel="noopener noreferrer" id="wd-github">
           View Repository
         </a>
       </p>

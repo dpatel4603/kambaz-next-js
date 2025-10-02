@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { FormControl, Button } from "react-bootstrap";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -60,43 +61,43 @@ export default function Signup() {
 
   return (
     <div id="wd-signup-screen">
-      <h3 style={{fontWeight: 'bold', fontSize: '1.5em'}}>Sign up</h3>
+      <h1>Sign up</h1>
       <form onSubmit={handleSubmit}>
-        <input 
+        <FormControl 
+          id="wd-username"
           name="username"
           placeholder="username" 
-          className="wd-username" 
+          className="mb-2"
           value={formData.username}
           onChange={handleInputChange}
         />
         {errors.username && <div style={{color: 'red', fontSize: '12px'}}>{errors.username}</div>}
-        <br/>
         
-        <input 
+        <FormControl 
+          id="wd-password"
           name="password"
           placeholder="password" 
           type="password" 
-          className="wd-password" 
+          className="mb-2"
           value={formData.password}
           onChange={handleInputChange}
         />
         {errors.password && <div style={{color: 'red', fontSize: '12px'}}>{errors.password}</div>}
-        <br/>
         
-        <input 
+        <FormControl 
+          id="wd-verify-password"
           name="verifyPassword"
           placeholder="verify password"
           type="password" 
-          className="wd-password-verify" 
+          className="mb-2"
           value={formData.verifyPassword}
           onChange={handleInputChange}
         />
         {errors.verifyPassword && <div style={{color: 'red', fontSize: '12px'}}>{errors.verifyPassword}</div>}
-        <br/>
         
-        <button type="submit" className="wd-signup-btn">Sign up</button><br />
+        <Button type="submit" variant="primary" className="w-100 mb-2">Sign up</Button>
       </form>
-      <Link href="/Account/Signin" > Sign in </Link>
+      <Link href="/Account/Signin">Sign in</Link>
     </div>
   );
 }
