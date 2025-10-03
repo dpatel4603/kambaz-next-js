@@ -4,7 +4,6 @@ import {
   FormSelect, 
   FormCheck, 
   InputGroup, 
-  InputGroupText,
   Row, 
   Col, 
   Form, 
@@ -49,14 +48,14 @@ export default function BootstrapForms() {
       <div id="wd-css-styling-addons">
         <h3>Addons</h3>
         <InputGroup className="mb-3">
-          <InputGroupText>$</InputGroupText>
-          <InputGroupText>0.00</InputGroupText>
+          <InputGroup.Text>$</InputGroup.Text>
+          <InputGroup.Text>0.00</InputGroup.Text>
           <FormControl />
         </InputGroup>
         <InputGroup>
           <FormControl />
-          <InputGroupText>$</InputGroupText>
-          <InputGroupText>0.00</InputGroupText>
+          <InputGroup.Text>$</InputGroup.Text>
+          <InputGroup.Text>0.00</InputGroup.Text>
         </InputGroup>
       </div>
 
