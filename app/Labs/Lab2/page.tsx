@@ -99,8 +99,8 @@ export default function Lab2() {
       <BootstrapTables />
       <BootstrapLists />
       <BootstrapForms />
-      <BootstrapNavigation />
-      <ScreenSizeLabel />
+      {/* <BootstrapNavigation />
+      <ScreenSizeLabel /> */}
     </Container>
   );
 }
